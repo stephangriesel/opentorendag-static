@@ -348,17 +348,70 @@
             justify-content: space-between;
         }
 
-        /* Mobile Adjustments */
+        .lang-switch a.active {
+            color: #fff;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1100;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Mobile Styles */
         @media (max-width: 768px) {
             header {
                 padding: 15px 20px;
             }
 
-            nav {
-                display: none;
+            .menu-toggle {
+                display: block;
             }
 
-            /* Could add a hamburger menu here later */
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: #222;
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s;
+                box-shadow: -10px 0 20px rgba(0, 0, 0, 0.5);
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav a {
+                margin: 20px 0;
+                font-size: 1.2em;
+            }
+
+            .lang-switch {
+                margin-left: 0;
+                margin-top: 20px;
+                border-left: none;
+                border-top: 1px solid #444;
+                padding-left: 0;
+                padding-top: 20px;
+            }
+
             .container {
                 margin-top: -30px;
                 padding: 25px;
@@ -384,6 +437,11 @@
         <div class="logo">
             <h2><span>O</span>PEN <span>T</span>OREN <span>D</span>AG</h2>
         </div>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Menu openen">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <nav>
             <a href="torens.html">Torens</a>
             <!-- <a href="#">Nieuwsbrief</a> -->
@@ -494,6 +552,31 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            // Toggle hamburger animation
+            const spans = menuToggle.querySelectorAll('span');
+            spans[0].style.transform = nav.classList.contains('active') ? 'rotate(45deg) translate(5px, 6px)' : 'none';
+            spans[1].style.opacity = nav.classList.contains('active') ? '0' : '1';
+            spans[2].style.transform = nav.classList.contains('active') ? 'rotate(-45deg) translate(5px, -6px)' : 'none';
+        });
+
+        // Close menu when clicking a link
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+        });
+    </script>
 
 </body>
 
