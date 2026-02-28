@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Toren Dag Amsterdam</title>
+    <style>
+        /* CSS Variables & Reset */
+        :root {
+            --primary-red: #EC1D27;
+            --accent-orange: #FF9700;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --header-bg: rgba(34, 34, 34, 0.9);
+            --footer-bg: #222;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            --font-heading: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            /* Fallback for FreigSanProBold */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation / Header */
+        header {
+            background: var(--header-bg);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .logo h2 {
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 1.4em;
+            letter-spacing: 1px;
+        }
+
+        .logo h2 span {
+            color: var(--primary-red);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-red);
+        }
+
+        .lang-switch {
+            font-size: 0.8em;
+            color: #aaa;
+            font-weight: bold;
+            margin-left: 20px;
+            border-left: 1px solid #444;
+            padding-left: 20px;
+        }
+
+        .lang-switch a {
+            margin: 0 5px;
+            color: #aaa;
+        }
+
+        .lang-switch a.active {
+            color: #fff;
+        }
+
+        /* Hero Image Section */
+        .hero {
+            background: #222 url('content/optimized/hero_amsterdam_optimized.jpg') no-repeat center center/cover;
+            height: 65vh;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 80px;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+        }
+
+        .hero-caption {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            padding: 6px 12px;
+            font-size: 0.75em;
+            border-radius: 2px;
+            z-index: 10;
+        }
+
+        /* Main Content Container */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto 60px;
+            padding: 50px;
+            background: #fff;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            position: relative;
+            z-index: 20;
+        }
+
+        .alert-banner {
+            background-color: #fff5f5;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--primary-red);
+            color: #444;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+        }
+
+        .alert-banner a {
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-left: auto;
+            text-decoration: none;
+            border: 1px solid var(--primary-red);
+            padding: 5px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .alert-banner a:hover {
+            background: var(--primary-red);
+            color: #fff;
+        }
+
+        h1 {
+            color: #111;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        h3 {
+            color: #111;
+            margin: 35px 0 20px 0;
+            font-size: 1.5em;
+            font-weight: 700;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            color: #444;
+            font-size: 1.05em;
+        }
+
+        ul {
+            margin-bottom: 30px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        /* Contact Highlight Box */
+        .contact-box {
+            background: #fdfdfd;
+            padding: 40px;
+            border: 1px solid #efefef;
+            margin: 40px 0;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .contact-box h3 {
+            border-bottom: none;
+            margin-top: 0;
+            justify-content: center;
+            display: flex;
+        }
+
+        .contact-box a.btn-contact {
+            display: inline-block;
+            background: var(--primary-red);
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 15px 0;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .contact-box a.btn-contact:hover {
+            background: #d01922;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-bg);
+            color: #fff;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sponsors {
+            font-size: 0.85em;
+            margin-bottom: 60px;
+            color: #999;
+            line-height: 2;
+            border-top: 1px solid #333;
+            padding-top: 40px;
+        }
+
+        .sponsors strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .support {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 4px;
+        }
+
+        .support h4 {
+            margin-bottom: 15px;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .support p {
+            color: #ccc;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .iban {
+            font-family: monospace;
+            color: #fff;
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        .tikkie-qr {
+            max-width: 160px;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            margin-right: 25px;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.75em;
+            color: #555;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            /* Could add a hamburger menu here later */
+            .container {
+                margin-top: -30px;
+                padding: 25px;
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h2><span>O</span>PEN <span>T</span>OREN <span>D</span>AG</h2>
+        </div>
+        <nav>
+            <a href="torens.html">Torens</a>
+            <!-- <a href="#">Nieuwsbrief</a> -->
+            <a href="contact.html">Contact</a>
+            <div class="lang-switch">
+                <a href="./index.html" class="active">NL</a> | <a href="./index_en.html">EN</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-caption">Foto © Peter Elenbaas | Amsterdam vanuit de lucht</div>
+    </div>
+
+    <div class="container">
+        <div class="alert-banner">
+            <span>Help mee om de “Notre-Dame van Amsterdam” weer op te bouwen, steun Stadsherstel en doneer uw
+                bijdrage.</span>
+            <a href="https://stadsherstel.nl/nieuws/help-mee-om-de-notre-dame-van-amsterdam-weer-op-te-bouwen/">Klik
+                Hier</a>
+        </div>
+
+        <h1>Wie neemt het stokje over voor de Open Toren Dag Amsterdam?</h1>
+        <p><strong>Oproep aan culturele organisaties, stichtingen, architectuurliefhebbers en evenementenorganisatoren
+                van Amsterdam.</strong></p>
+
+        <p>Sinds 2013 is de Open Toren Dag Amsterdam (OTD) een hoogtepunt op de Amsterdamse culturele kalender. Met
+            duizenden enthousiaste bezoekers per editie biedt dit unieke evenement vergezichten over de stad en een
+            zeldzame blik achter de schermen van zowel historische als moderne torens.</p>
+
+        <p>De huidige Stichting Open The Doors heeft met veel passie dit evenement tot een groot succes gemaakt. Echter,
+            om de continuïteit te waarborgen, zoekt het huidige bestuur naar een geschikte partij om de organisatie over
+            te nemen.</p>
+
+        <h3>Wij zoeken een nieuwe organisator die:</h3>
+        <ul>
+            <li><strong>De visie deelt:</strong> Liefde voor architectuur, geschiedenis en het toegankelijk maken van
+                Amsterdamse torens voor een breed publiek.</li>
+            <li><strong>Ervaring heeft:</strong> Affiniteit met evenementenorganisatie, vrijwilligersmanagement en
+                culturele projecten.</li>
+            <li><strong>De middelen heeft:</strong> De capaciteit en ambitie om de OTD verder te laten groeien.</li>
+            <li><strong>Het netwerk benut:</strong> Relaties met deelnemende torens, de Gemeente Amsterdam en sponsors
+                kan onderhouden.</li>
+        </ul>
+
+        <h3>Wat wij bieden:</h3>
+        <p>Een solide basis met een beproefde organisatiestructuur, een sterk merk, een actief netwerk van partners en
+            een duidelijke blauwdruk voor toekomstige edities. Het bestuur begeleidt graag een soepele overdracht.</p>
+
+        <div class="contact-box">
+            <h3>Interesse in een gesprek?</h3>
+            <p>Neem contact op met Henri van Poll, voorzitter stichting Open The Doors.</p>
+            <a href="mailto:info@openthedoors.nl" class="btn-contact">Stuur een e-mail</a>
+            <p style="font-size: 0.9em; margin-top: 15px;"><a
+                    href="./content/2025sotdekstovernamedecember7algemeenNL.pdf" style="color: #666;">Download
+                    informatie als
+                    PDF</a></p>
+        </div>
+
+        <p>Draag bij aan het behoud van dit unieke Amsterdamse evenement en zet de Open Toren Dag voort voor toekomstige
+            generaties.</p>
+
+        <p style="margin-top: 40px;"><em>Torenhoge groet,<br><strong>Het Bestuur Stichting Open The Doors</strong></em>
+        </p>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div>
+                    <!-- <div class="footer-links">
+                        <a href="#">Sponsors 2025</a>
+                        <a href="#">Bezoekersvoorwaarden</a>
+                        <a href="#">Algemene voorwaarden</a>
+                        <a href="#">Disclaimer</a>
+                        <a href="#">Privacyverklaring</a>
+                        <a href="#">Pers</a>
+                    </div> -->
+                    <p style="color: #666; font-size: 0.9em; max-width: 500px;">Open Toren Dag Amsterdam is een
+                        initiatief van Stichting Open The Doors. Wij zetten ons in om de rijke architectuur van onze
+                        stad toegankelijk te maken voor iedereen.</p>
+                </div>
+
+                <!-- <div class="support">
+                    <h4>Steun de stichting</h4>
+                    <p>Uw bijdrage helpt ons dit evenement mogelijk te maken. Scan de QR code op locatie of gebruik onze
+                        IBAN.</p>
+                    <img src="content/optimized/tikkie_qr.png" alt="Tikkie QR" class="tikkie-qr">
+                    <div class="iban">NL68 ABNA 0413 7404 20</div>
+                    <p style="font-size: 0.8em; margin-top: 15px; color: #888;">Stichting Open The Doors (RSIN:
+                        852261942)</p>
+                </div> -->
+            </div>
+
+            <div class="sponsors">
+                <strong>Partners & Sponsors 2025</strong>
+                247 Spice Radio, A'DAM LOOKOUT, Amsterdam Fonds voor de Kunst, Albert Heijn, Blue Amsterdam, CBRE Invest
+                Management, De Wervingsspecialist, Depot De Munt, Financial Offices, GIG, HOFF Amsterdam, MyWay,
+                Rembrandt Amsterdam Experience, Rembrandt Tower, RentNet, Rij bij Vincent, ROC van Amsterdam, Stichting
+                Amsterdam 750, Stichting Hello Zuidas, Stichting Hoogbouw, SoundTrackCity, Universiteit van Amsterdam,
+                Use/Space, Vereniging Amsterdam City, Vonckelend, Vrije Universiteit, VSB Fonds, Zandkasteel Amsterdam,
+                Zuiderkerk Amsterdam.
+            </div>
+
+            <div class="copyright">
+                <span>&copy; 2026 Open Toren Dag Amsterdam. Alle rechten voorbehouden.</span>
+                <!-- <span>Made with &hearts; for Amsterdam</span> -->
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

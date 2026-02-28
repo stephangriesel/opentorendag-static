@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torens Overzicht | Open Toren Dag Amsterdam</title>
+    <style>
+        /* CSS Variables & Reset (Synced with index.html) */
+        :root {
+            --primary-red: #EC1D27;
+            --accent-orange: #FF9700;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --header-bg: rgba(34, 34, 34, 0.9);
+            --footer-bg: #222;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation / Header */
+        header {
+            background: var(--header-bg);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo h2 {
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 1.4em;
+            letter-spacing: 1px;
+        }
+
+        .logo h2 span {
+            color: var(--primary-red);
+        }
+
+        .logo a {
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary-red);
+        }
+
+        .lang-switch {
+            font-size: 0.8em;
+            color: #aaa;
+            font-weight: bold;
+            margin-left: 20px;
+            border-left: 1px solid #444;
+            padding-left: 20px;
+        }
+
+        .lang-switch a {
+            margin: 0 5px;
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .lang-switch a.active {
+            color: #fff;
+        }
+
+        /* Page Title Section */
+        .page-header {
+            background: #222;
+            color: #fff;
+            padding: 100px 40px 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3em;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Towers Grid Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto 80px;
+            padding: 0 20px;
+        }
+
+        .towers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        /* Tower Card */
+        .tower-card {
+            position: relative;
+            aspect-ratio: 1 / 1.25;
+            background-color: #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            text-decoration: none;
+            display: block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tower-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .tower-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .tower-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .tower-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--primary-red);
+            color: #fff;
+            padding: 4px 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 3px;
+            z-index: 10;
+        }
+
+        .tower-badge.noord {
+            background: var(--accent-orange);
+        }
+
+        .tower-badge.oost {
+            background: #28a745;
+        }
+
+        .tower-badge.zuid {
+            background: #007bff;
+        }
+
+        .tower-badge.west {
+            background: #6f42c1;
+        }
+
+        .tower-badge.zuidoost {
+            background: #e83e8c;
+        }
+
+        .tower-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 20px 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: #fff;
+            z-index: 5;
+        }
+
+        .tower-overlay h3 {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Footer (Synced with index.html) */
+        footer {
+            background-color: var(--footer-bg);
+            color: #fff;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .sponsors {
+            font-size: 0.85em;
+            margin-bottom: 60px;
+            color: #999;
+            line-height: 2;
+            border-top: 1px solid #333;
+            padding-top: 40px;
+        }
+
+        .sponsors strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .support {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 4px;
+        }
+
+        .support h4 {
+            margin-bottom: 15px;
+            color: var(--primary-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .support p {
+            color: #ccc;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .iban {
+            font-family: monospace;
+            color: #fff;
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        .tikkie-qr {
+            max-width: 160px;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            margin-right: 25px;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #fff;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.75em;
+            color: #555;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 992px) {
+            .towers-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .towers-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <h2><span>O</span>PEN <span>T</span>OREN <span>D</span>AG</h2>
+            </a>
+        </div>
+        <nav>
+            <a href="torens.html" class="active">Torens</a>
+            <!-- <a href="#">Nieuwsbrief</a> -->
+            <a href="contact.html">Contact</a>
+            <!-- <div class="lang-switch">
+                <a href="#" class="active">NL</a> | <a href="#">EN</a>
+            </div> -->
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Torens 2025</h1>
+    </div>
+
+    <div class="container">
+        <div class="towers-grid">
+            <!-- tower cards -->
+            <a href="#" class="tower-card">
+                <div class="tower-badge noord">Noord</div>
+                <img loading="lazy" src="content/optimized/Look_Out_5B.jpg" alt="Look Out">
+                <div class="tower-overlay">
+                    <h3>A'DAM LOOKOUT</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge oost">Oost</div>
+                <img loading="lazy" src="content/optimized/Movenpick_7B.jpg" alt="Mövenpick">
+                <div class="tower-overlay">
+                    <h3>Mövenpick Hotel</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuidas">Zuidas</div>
+                <img loading="lazy" src="content/optimized/Nhow_hotel17.jpg" alt="Nhow">
+                <div class="tower-overlay">
+                    <h3>nhow Amsterdam RAI</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/Zuidertoren3.jpg" alt="Zuiderkerktoren">
+                <div class="tower-overlay">
+                    <h3>Zuiderkerktoren</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge west">West</div>
+                <img loading="lazy" src="content/optimized/moskee_8.jpg" alt="Westermoskee">
+                <div class="tower-overlay">
+                    <h3>Westermoskee</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge oost">Oost</div>
+                <img loading="lazy" src="content/optimized/Ruby8B.jpg" alt="Ruby Emma">
+                <div class="tower-overlay">
+                    <h3>Ruby Emma Hotel</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuidas">Zuidas</div>
+                <img loading="lazy" src="content/optimized/ABN_AMRO_2.jpg" alt="ABN AMRO">
+                <div class="tower-overlay">
+                    <h3>ABN AMRO (The Pulse)</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge west">West</div>
+                <img loading="lazy" src="content/optimized/BOLO_Den4.jpg" alt="BOLO Den">
+                <div class="tower-overlay">
+                    <h3>BOLO Den</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/Beurs____7.jpg" alt="Beurs van Berlage">
+                <div class="tower-overlay">
+                    <h3>Beurs van Berlage</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/Brughotel_2.jpg" alt="Brughotel">
+                <div class="tower-overlay">
+                    <h3>Sweets hotel - Kortjewantsbrug</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuid">Zuid</div>
+                <img loading="lazy" src="content/optimized/Elicium_parkeergarage9.jpg" alt="RAI Elicium">
+                <div class="tower-overlay">
+                    <h3>RAI Elicium</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuidoost">Zuidoost</div>
+                <img loading="lazy" src="content/optimized/Fletcher3.jpg" alt="Fletcher Hotel">
+                <div class="tower-overlay">
+                    <h3>Fletcher Hotel Amsterdam</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuidoost">Zuidoost</div>
+                <img loading="lazy" src="content/optimized/Gouden_leeuw1.jpg" alt="Gouden Leeuw">
+                <div class="tower-overlay">
+                    <h3>Gouden Leeuw</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuidoost">Zuidoost</div>
+                <img loading="lazy" src="content/optimized/Grubbenhoeve11.jpg" alt="Grubbenhoeve">
+                <div class="tower-overlay">
+                    <h3>Grubbehoeve</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge west">West</div>
+                <img loading="lazy" src="content/optimized/HVO2.jpg" alt="HVO">
+                <div class="tower-overlay">
+                    <h3>HVO Querido</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuidas">Zuidas</div>
+                <img loading="lazy" src="content/optimized/Hoff_Offices_2.jpg" alt="Hoff Offices">
+                <div class="tower-overlay">
+                    <h3>HOFF Amsterdam</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge noord">Noord</div>
+                <img loading="lazy" src="content/optimized/Noordkaap.jpg" alt="Noordkaap">
+                <div class="tower-overlay">
+                    <h3>Noordkaap</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge noord">Noord</div>
+                <img loading="lazy" src="content/optimized/20241001_111516.jpg" alt="Vuurtoreneiland">
+                <div class="tower-overlay">
+                    <h3>Vuurtoreneiland</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge oost">Oost</div>
+                <img loading="lazy" src="content/optimized/Open_Hofkerk10.jpg" alt="Hofkerk">
+                <div class="tower-overlay">
+                    <h3>Hofkerk</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge oost">Oost</div>
+                <img loading="lazy" src="content/optimized/Jakarta2.jpg" alt="Jakarta">
+                <div class="tower-overlay">
+                    <h3>Hotel Jakarta Amsterdam</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge oost">Oost</div>
+                <img loading="lazy" src="content/optimized/Loyd2.jpg" alt="Hoxton Lloyd">
+                <div class="tower-overlay">
+                    <h3>The Hoxton Lloyd</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge oost">Oost</div>
+                <img loading="lazy" src="content/optimized/Science_Park8.jpg" alt="Science Park">
+                <div class="tower-overlay">
+                    <h3>UvA Science Park</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge west">West</div>
+                <img loading="lazy" src="content/optimized/REM-eiland2.jpg" alt="REM-eiland">
+                <div class="tower-overlay">
+                    <h3>REM-eiland</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge west">West</div>
+                <img loading="lazy" src="content/optimized/Westcord_2.jpg" alt="Westcord">
+                <div class="tower-overlay">
+                    <h3>Westcord Fashion Hotel</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuidoost">Zuidoost</div>
+                <img loading="lazy" src="content/optimized/Zandkasteel15.jpg" alt="Zandkasteel">
+                <div class="tower-overlay">
+                    <h3>Zandkasteel</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge oost">Oost</div>
+                <img loading="lazy" src="content/optimized/Staal_Kade1.jpg" alt="Watertoren">
+                <div class="tower-overlay">
+                    <h3>Watertoren Zuidergasfabriek</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/Waag6.jpg" alt="Waag">
+                <div class="tower-overlay">
+                    <h3>De Waag</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/Ned._Bank__4.jpg" alt="DNB">
+                <div class="tower-overlay">
+                    <h3>De Nederlandsche Bank</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge oost">Oost</div>
+                <img loading="lazy" src="content/optimized/vd_Valk_1.jpg" alt="Van der Valk">
+                <div class="tower-overlay">
+                    <h3>Van der Valk Hotel Amstel</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/Kalvertoren14.jpg" alt="Kalvertoren">
+                <div class="tower-overlay">
+                    <h3>Kalvertoren - Blue</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/NIO10.jpg" alt="NIO">
+                <div class="tower-overlay">
+                    <h3>NIO House</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/Westertoren_13.jpg" alt="Westertoren">
+                <div class="tower-overlay">
+                    <h3>Westertoren</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/Posthoorn_2.jpg" alt="Posthoorn">
+                <div class="tower-overlay">
+                    <h3>Posthoornkerktoren</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge noord">Noord</div>
+                <img loading="lazy" src="content/optimized/Student_experience_NDSM4.jpg" alt="NDSM">
+                <div class="tower-overlay">
+                    <h3>Student Experience NDSM</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge west">West</div>
+                <img loading="lazy" src="content/optimized/Leonardo.jpg" alt="Leonardo">
+                <div class="tower-overlay">
+                    <h3>Leonardo Rembrandtpark</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge west">West</div>
+                <img loading="lazy" src="content/optimized/Rochdale12.jpg" alt="Rochdale">
+                <div class="tower-overlay">
+                    <h3>Rochdale HQ</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuidas">Zuidas</div>
+                <img loading="lazy" src="content/optimized/Symphony2_2.jpg" alt="Symphony">
+                <div class="tower-overlay">
+                    <h3>Symphonytoren</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuidas">Zuidas</div>
+                <img loading="lazy" src="content/optimized/VU_OZW_Gebouw_11.jpg" alt="VU">
+                <div class="tower-overlay">
+                    <h3>VU OZW gebouw</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/In_Holland_Academy.jpg" alt="In Holland">
+                <div class="tower-overlay">
+                    <h3>In Holland Academy</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge zuid">Zuid</div>
+                <img loading="lazy" src="content/optimized/Marathontoren1.jpg" alt="Marathontoren">
+                <div class="tower-overlay">
+                    <h3>Marathontoren</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge noord">Noord</div>
+                <img loading="lazy" src="content/optimized/Maritim_2b.jpg" alt="Maritim">
+                <div class="tower-overlay">
+                    <h3>Maritim Hotel</h3>
+                </div>
+            </a>
+            <a href="#" class="tower-card">
+                <div class="tower-badge">Centrum</div>
+                <img loading="lazy" src="content/optimized/Nieuwe_Kerk_1.jpg" alt="Nieuwe Kerk">
+                <div class="tower-overlay">
+                    <h3>Nieuwe Kerk</h3>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div>
+                    <!-- <div class="footer-links">
+                        <a href="#">Sponsors 2025</a>
+                        <a href="#">Bezoekersvoorwaarden</a>
+                        <a href="#">Algemene voorwaarden</a>
+                        <a href="#">Disclaimer</a>
+                        <a href="#">Privacyverklaring</a>
+                        <a href="#">Pers</a>
+                    </div> -->
+                    <p style="color: #666; font-size: 0.9em; max-width: 500px;">Open Toren Dag Amsterdam is een
+                        initiatief van Stichting Open The Doors. Wij zetten ons in om de rijke architectuur van onze
+                        stad toegankelijk te maken voor iedereen.</p>
+                </div>
+
+                <!-- <div class="support">
+                    <h4>Steun de stichting</h4>
+                    <p>Uw bijdrage helpt ons dit evenement mogelijk te maken. Scan de QR code op locatie of gebruik onze
+                        IBAN.</p>
+                    <img src="content/optimized/tikkie_qr.png" alt="Tikkie QR" class="tikkie-qr">
+                    <div class="iban">NL68 ABNA 0413 7404 20</div>
+                    <p style="font-size: 0.8em; margin-top: 15px; color: #888;">Stichting Open The Doors (RSIN:
+                        852261942)</p>
+                </div> -->
+            </div>
+
+            <div class="sponsors">
+                <strong>Partners & Sponsors 2025</strong>
+                247 Spice Radio, A'DAM LOOKOUT, Amsterdam Fonds voor de Kunst, Albert Heijn, Blue Amsterdam, CBRE Invest
+                Management, De Wervingsspecialist, Depot De Munt, Financial Offices, GIG, HOFF Amsterdam, MyWay,
+                Rembrandt Amsterdam Experience, Rembrandt Tower, RentNet, Rij bij Vincent, ROC van Amsterdam, Stichting
+                Amsterdam 750, Stichting Hello Zuidas, Stichting Hoogbouw, SoundTrackCity, Universiteit van Amsterdam,
+                Use/Space, Vereniging Amsterdam City, Vonckelend, Vrije Universiteit, VSB Fonds, Zandkasteel Amsterdam,
+                Zuiderkerk Amsterdam.
+            </div>
+
+            <div class="copyright">
+                <span>&copy; 2026 Open Toren Dag Amsterdam. Alle rechten voorbehouden.</span>
+                <!-- <span>Made with &hearts; for Amsterdam</span> -->
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

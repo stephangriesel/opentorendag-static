@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Open Toren Dag Amsterdam</title>
+    <style>
+        /* CSS Variables & Reset (Synced with index.html) */
+        :root {
+            --primary-red: #EC1D27;
+            --accent-orange: #FF9700;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --header-bg: rgba(34, 34, 34, 0.9);
+            --footer-bg: #222;
+            --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-main);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation / Header (Synced with torens.html for subpage behavior) */
+        header {
+            background: var(--header-bg);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo h2 {
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 1.4em;
+            letter-spacing: 1px;
+        }
+
+        .logo h2 span {
+            color: var(--primary-red);
+        }
+
+        .logo a {
+            text-decoration: none;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover,
+        nav a.active {
+            color: var(--primary-red);
+        }
+
+        .lang-switch {
+            font-size: 0.8em;
+            color: #aaa;
+            font-weight: bold;
+            margin-left: 20px;
+            border-left: 1px solid #444;
+            padding-left: 20px;
+        }
+
+        .lang-switch a {
+            margin: 0 5px;
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .lang-switch a.active {
+            color: #fff;
+        }
+
+        /* Main Content Container (Synced with index.html) */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto 60px;
+            padding: 50px;
+            background: #fff;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            position: relative;
+            z-index: 20;
+        }
+
+        h1 {
+            color: #111;
+            margin-bottom: 25px;
+            font-size: 2.5em;
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            margin: 35px 0 20px 0;
+            font-weight: 700;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            color: #111;
+        }
+
+        .contact-info {
+            font-size: 1.1em;
+            color: #444;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+            color: #444;
+            font-size: 1.05em;
+        }
+
+        .contact-info a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer (Synced with index.html) */
+        footer {
+            background-color: var(--footer-bg);
+            color: #fff;
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .sponsors {
+            font-size: 0.85em;
+            margin-bottom: 60px;
+            color: #999;
+            line-height: 2;
+            border-top: 1px solid #333;
+            padding-top: 40px;
+        }
+
+        .sponsors strong {
+            color: #fff;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .copyright {
+            margin-top: 40px;
+            font-size: 0.75em;
+            color: #555;
+            border-top: 1px solid #333;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .container {
+                margin-top: 20px;
+                padding: 25px;
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <h2><span>O</span>PEN <span>T</span>OREN <span>D</span>AG</h2>
+            </a>
+        </div>
+        <nav>
+            <a href="torens.html">Torens</a>
+            <!-- <a href="#">Nieuwsbrief</a> -->
+            <a href="contact.html" class="active">Contact</a>
+            <!-- <div class="lang-switch">
+                <a href="#" class="active">NL</a> | <a href="#">EN</a>
+            </div> -->
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Contactinformatie</h1>
+
+        <div class="contact-info">
+            <h3>Stichting Open The Doors / Organisatie Open Toren Dag</h3>
+
+            <p>
+                Gustav Mahlerplein 115<br>
+                1082 MS Amsterdam
+            </p>
+
+            <p>
+                <strong>Henri van Poll</strong><br>
+                <a href="mailto:info@openthedoors.nl">info@openthedoors.nl</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div>
+                    <p style="color: #666; font-size: 0.9em; max-width: 500px;">Open Toren Dag Amsterdam is een
+                        initiatief van Stichting Open The Doors. Wij zetten ons in om de rijke architectuur van onze
+                        stad toegankelijk te maken voor iedereen.</p>
+                </div>
+            </div>
+
+            <div class="sponsors">
+                <strong>Partners & Sponsors 2025</strong>
+                247 Spice Radio, A'DAM LOOKOUT, Amsterdam Fonds voor de Kunst, Albert Heijn, Blue Amsterdam, CBRE Invest
+                Management, De Wervingsspecialist, Depot De Munt, Financial Offices, GIG, HOFF Amsterdam, MyWay,
+                Rembrandt Amsterdam Experience, Rembrandt Tower, RentNet, Rij bij Vincent, ROC van Amsterdam, Stichting
+                Amsterdam 750, Stichting Hello Zuidas, Stichting Hoogbouw, SoundTrackCity, Universiteit van Amsterdam,
+                Use/Space, Vereniging Amsterdam City, Vonckelend, Vrije Universiteit, VSB Fonds, Zandkasteel Amsterdam,
+                Zuiderkerk Amsterdam.
+            </div>
+
+            <div class="copyright">
+                <span>&copy; 2026 Open Toren Dag Amsterdam. Alle rechten voorbehouden.</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
