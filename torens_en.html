@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torens Overzicht | Open Toren Dag Amsterdam</title>
+    <title>Towers Overview | Open Tower Day Amsterdam</title>
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
         /* CSS Variables & Reset (Synced with index.html) */
@@ -239,22 +239,6 @@
             margin: 0 auto;
         }
 
-        .sponsors {
-            font-size: 0.85em;
-            margin-bottom: 60px;
-            color: #999;
-            line-height: 2;
-            border-top: 1px solid #333;
-            padding-top: 40px;
-        }
-
-        .sponsors strong {
-            color: #fff;
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-
         .footer-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -262,44 +246,10 @@
             margin-bottom: 60px;
         }
 
-        .support {
-            background: #2a2a2a;
-            padding: 30px;
-            border-radius: 4px;
-        }
-
-        .support h4 {
-            margin-bottom: 15px;
-            color: var(--primary-red);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .support p {
-            color: #ccc;
-            font-size: 0.9em;
-            margin-bottom: 15px;
-        }
-
-        .iban {
-            font-family: monospace;
-            color: #fff;
-            background: #1a1a1a;
-            padding: 10px;
-            border-radius: 3px;
-            font-size: 0.9em;
-        }
-
-        .tikkie-qr {
-            max-width: 160px;
-            margin: 20px 0;
-            border-radius: 8px;
-            display: block;
-        }
-
         .footer-links {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 8px;
             margin-bottom: 40px;
         }
 
@@ -396,41 +346,41 @@
 
     <header>
         <div class="logo">
-            <a href="index.html">
-                <h2><span>O</span>PEN <span>T</span>OREN <span>D</span>AG</h2>
+            <a href="index_en.html">
+                <h2><span>O</span>PEN <span>T</span>OWER <span>D</span>AY</h2>
             </a>
         </div>
-        <button class="menu-toggle" id="menu-toggle" aria-label="Menu openen">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
         <nav>
-            <a href="torens.html" class="active">Torens</a>
-            <!-- <a href="#">Nieuwsbrief</a> -->
+            <a href="torens_en.html" class="active">Towers 2025</a>
+            <!-- <a href="#">Newsletter</a> -->
             <a href="contact.html">Contact</a>
-            <div class="lang-switch">
-                <a href="./torens.html" class="active">NL</a> | <a href="./torens_en.html">EN</a>
+            <div class="lang-switch" style="display: inline-block; border: none; padding: 0; margin-left: 20px; border-left: 1px solid #444; padding-left: 20px;">
+                <a href="./torens.html">NL</a> | <a href="./torens_en.html" class="active">EN</a>
             </div>
         </nav>
     </header>
 
     <div class="page-header">
-        <h1>Torens Deelnemers 2025</h1>
+        <h1>Towers Participants 2025</h1>
     </div>
 
     <div class="container">
         <div class="towers-grid">
             <!-- tower cards -->
             <a href="#" class="tower-card">
-                <div class="tower-badge noord">Noord</div>
+                <div class="tower-badge noord">North</div>
                 <img loading="lazy" src="content/optimized/Look_Out_5B.jpg" alt="Look Out">
                 <div class="tower-overlay">
                     <h3>A'DAM LOOKOUT</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge oost">Oost</div>
+                <div class="tower-badge oost">East</div>
                 <img loading="lazy" src="content/optimized/Movenpick_7B.jpg" alt="Mövenpick">
                 <div class="tower-overlay">
                     <h3>Mövenpick Hotel</h3>
@@ -444,7 +394,7 @@
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
+                <div class="tower-badge">City Center</div>
                 <img loading="lazy" src="content/optimized/Zuidertoren3.jpg" alt="Zuiderkerktoren">
                 <div class="tower-overlay">
                     <h3>Zuiderkerktoren</h3>
@@ -458,63 +408,35 @@
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge oost">Oost</div>
+                <div class="tower-badge oost">East</div>
                 <img loading="lazy" src="content/optimized/Ruby8B.jpg" alt="Ruby Emma">
                 <div class="tower-overlay">
                     <h3>Ruby Emma Hotel</h3>
                 </div>
             </a>
-            <!-- <a href="#" class="tower-card">
-                <div class="tower-badge zuidas">Zuidas</div>
-                <img loading="lazy" src="content/optimized/ABN_AMRO_2.jpg" alt="ABN AMRO">
-                <div class="tower-overlay">
-                    <h3>ABN AMRO (The Pulse)</h3>
-                </div>
-            </a> -->
-            <!-- <a href="#" class="tower-card">
-                <div class="tower-badge west">West</div>
-                <img loading="lazy" src="content/optimized/BOLO_Den4.jpg" alt="BOLO Den">
-                <div class="tower-overlay">
-                    <h3>BOLO Den</h3>
-                </div>
-            </a> -->
-            <!-- <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
-                <img loading="lazy" src="content/optimized/Beurs____7.jpg" alt="Beurs van Berlage">
-                <div class="tower-overlay">
-                    <h3>Beurs van Berlage</h3>
-                </div>
-            </a> -->
             <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
+                <div class="tower-badge">City Center</div>
                 <img loading="lazy" src="content/optimized/Brughotel_2.jpg" alt="Brughotel">
                 <div class="tower-overlay">
                     <h3>Sweets hotel - Kortjewantsbrug</h3>
                 </div>
             </a>
-            <!-- <a href="#" class="tower-card">
-                <div class="tower-badge zuid">Zuid</div>
-                <img loading="lazy" src="content/optimized/Elicium_parkeergarage9.jpg" alt="RAI Elicium">
-                <div class="tower-overlay">
-                    <h3>RAI Elicium</h3>
-                </div>
-            </a> -->
             <a href="#" class="tower-card">
-                <div class="tower-badge zuidoost">Zuidoost</div>
+                <div class="tower-badge zuidoost">Southeast</div>
                 <img loading="lazy" src="content/optimized/Fletcher3.jpg" alt="Fletcher Hotel">
                 <div class="tower-overlay">
                     <h3>Fletcher Hotel Amsterdam</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge zuidoost">Zuidoost</div>
+                <div class="tower-badge zuidoost">Southeast</div>
                 <img loading="lazy" src="content/optimized/Gouden_leeuw1.jpg" alt="Gouden Leeuw">
                 <div class="tower-overlay">
                     <h3>Gouden Leeuw</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge zuidoost">Zuidoost</div>
+                <div class="tower-badge zuidoost">Southeast</div>
                 <img loading="lazy" src="content/optimized/Grubbenhoeve11.jpg" alt="Grubbenhoeve">
                 <div class="tower-overlay">
                     <h3>Grubbehoeve</h3>
@@ -535,42 +457,42 @@
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge noord">Noord</div>
+                <div class="tower-badge noord">North</div>
                 <img loading="lazy" src="content/optimized/Noordkaap.jpg" alt="Noordkaap">
                 <div class="tower-overlay">
                     <h3>Noordkaap</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge noord">Noord</div>
+                <div class="tower-badge noord">North</div>
                 <img loading="lazy" src="content/optimized/20241001_111516.jpg" alt="Vuurtoreneiland">
                 <div class="tower-overlay">
                     <h3>Vuurtoreneiland</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge oost">Oost</div>
+                <div class="tower-badge oost">East</div>
                 <img loading="lazy" src="content/optimized/Open_Hofkerk10.jpg" alt="Hofkerk">
                 <div class="tower-overlay">
                     <h3>Hofkerk</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge oost">Oost</div>
+                <div class="tower-badge oost">East</div>
                 <img loading="lazy" src="content/optimized/Jakarta2.jpg" alt="Jakarta">
                 <div class="tower-overlay">
                     <h3>Hotel Jakarta Amsterdam by WestCord</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge oost">Oost</div>
+                <div class="tower-badge oost">East</div>
                 <img loading="lazy" src="content/optimized/Loyd2.jpg" alt="Hoxton Lloyd">
                 <div class="tower-overlay">
                     <h3>The Hoxton Hotel in Lloyd Amsterdam</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge oost">Oost</div>
+                <div class="tower-badge oost">East</div>
                 <img loading="lazy" src="content/optimized/Science_Park8.jpg" alt="Science Park">
                 <div class="tower-overlay">
                     <h3>UvA Science Park</h3>
@@ -591,82 +513,75 @@
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge zuidoost">Zuidoost</div>
+                <div class="tower-badge zuidoost">Southeast</div>
                 <img loading="lazy" src="content/optimized/Zandkasteel15.jpg" alt="Zandkasteel">
                 <div class="tower-overlay">
-                    <h3>Zandkasteel – locatie Re-Invent</h3>
+                    <h3>Zandkasteel – location Re-Invent</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge oost">Oost</div>
+                <div class="tower-badge oost">East</div>
                 <img loading="lazy" src="content/optimized/Staal_Kade1.jpg" alt="Watertoren">
                 <div class="tower-overlay">
                     <h3>Watertoren Zuidergasfabriek</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
+                <div class="tower-badge">City Center</div>
                 <img loading="lazy" src="content/optimized/Waag6.jpg" alt="Waag">
                 <div class="tower-overlay">
                     <h3>De Waag</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
+                <div class="tower-badge">City Center</div>
                 <img loading="lazy" src="content/optimized/Ned._Bank__4.jpg" alt="DNB">
                 <div class="tower-overlay">
                     <h3>De Nederlandsche Bank</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge oost">Oost</div>
+                <div class="tower-badge oost">East</div>
                 <img loading="lazy" src="content/optimized/vd_Valk_1.jpg" alt="Van der Valk">
                 <div class="tower-overlay">
                     <h3>Van der Valk Hotel Amstel</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
+                <div class="tower-badge">City Center</div>
                 <img loading="lazy" src="content/optimized/Kalvertoren14.jpg" alt="Kalvertoren">
                 <div class="tower-overlay">
                     <h3>Kalvertoren - Blue</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
+                <div class="tower-badge">City Center</div>
                 <img loading="lazy" src="content/optimized/NIO10.jpg" alt="NIO">
                 <div class="tower-overlay">
                     <h3>NIO House</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
+                <div class="tower-badge">City Center</div>
                 <img loading="lazy" src="content/optimized/Westertoren_13.jpg" alt="Westertoren">
                 <div class="tower-overlay">
                     <h3>Westertoren</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
+                <div class="tower-badge">City Center</div>
                 <img loading="lazy" src="content/optimized/Posthoorn_2.jpg" alt="Posthoorn">
                 <div class="tower-overlay">
                     <h3>Posthoornkerktoren</h3>
                 </div>
             </a>
             <a href="#" class="tower-card">
-                <div class="tower-badge noord">Noord</div>
+                <div class="tower-badge noord">North</div>
                 <img loading="lazy" src="content/optimized/Student_experience_NDSM4.jpg" alt="NDSM">
                 <div class="tower-overlay">
                     <h3>Student Experience NDSM</h3>
                 </div>
             </a>
-            <!-- <a href="#" class="tower-card">
-                <div class="tower-badge west">West</div>
-                <img loading="lazy" src="content/optimized/Leonardo.jpg" alt="Leonardo">
-                <div class="tower-overlay">
-                    <h3>Leonardo Rembrandtpark</h3>
-                </div>
-            </a> -->
             <a href="#" class="tower-card">
                 <div class="tower-badge west">West</div>
                 <img loading="lazy" src="content/optimized/Rochdale12.jpg" alt="Rochdale">
@@ -681,41 +596,6 @@
                     <h3>Symphonytoren</h3>
                 </div>
             </a>
-            <!-- <a href="#" class="tower-card">
-                <div class="tower-badge zuidas">Zuidas</div>
-                <img loading="lazy" src="content/optimized/VU_OZW_Gebouw_11.jpg" alt="VU">
-                <div class="tower-overlay">
-                    <h3>VU OZW gebouw</h3>
-                </div>
-            </a> -->
-            <!-- <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
-                <img loading="lazy" src="content/optimized/In_Holland_Academy.jpg" alt="In Holland">
-                <div class="tower-overlay">
-                    <h3>In Holland Academy</h3>
-                </div>
-            </a> -->
-            <!-- <a href="#" class="tower-card">
-                <div class="tower-badge zuid">Zuid</div>
-                <img loading="lazy" src="content/optimized/Marathontoren1.jpg" alt="Marathontoren">
-                <div class="tower-overlay">
-                    <h3>Marathontoren</h3>
-                </div>
-            </a> -->
-            <!-- <a href="#" class="tower-card">
-                <div class="tower-badge noord">Noord</div>
-                <img loading="lazy" src="content/optimized/Maritim_2b.jpg" alt="Maritim">
-                <div class="tower-overlay">
-                    <h3>Maritim Hotel</h3>
-                </div>
-            </a> -->
-            <!-- <a href="#" class="tower-card">
-                <div class="tower-badge">Centrum</div>
-                <img loading="lazy" src="content/optimized/Nieuwe_Kerk_1.jpg" alt="Nieuwe Kerk">
-                <div class="tower-overlay">
-                    <h3>Nieuwe Kerk</h3>
-                </div>
-            </a> -->
         </div>
     </div>
 
@@ -723,12 +603,12 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div>
-                    <div class="footer-links" style="display: flex; flex-direction: column; gap: 8px;">
-                        <a href="torens.html">Torens</a>
+                    <div class="footer-links">
+                        <a href="torens_en.html">Towers 2025</a>
                         <a href="contact.html">Contact</a>
                         <div class="lang-switch"
                             style="display: inline-block; border: none; padding: 0; margin-left: 0; margin-top: 10px;">
-                            <a href="./torens.html" class="active">NL</a> | <a href="./torens_en.html">EN</a>
+                            <a href="./torens.html">NL</a> | <a href="./torens_en.html" class="active">EN</a>
                         </div>
                     </div>
                 </div>
@@ -736,9 +616,9 @@
                 <div>
                     <h4
                         style="margin-bottom: 15px; color: var(--primary-red); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9em; font-weight: bold;">
-                        Organisatie</h4>
-                    <p style="color: #ccc; font-size: 0.9em; max-width: 500px;">Open Toren Dag Amsterdam is een
-                        initiatief van Stichting Open The Doors.</p>
+                        Organization</h4>
+                    <p style="color: #ccc; font-size: 0.9em; max-width: 500px;">Open Tower Day Amsterdam is an
+                        initiative of Stichting Open The Doors.</p>
                 </div>
 
                 <div>
@@ -761,8 +641,7 @@
             </div>
 
             <div class="copyright">
-                <span>&copy; 2026 Open Toren Dag Amsterdam. Alle rechten voorbehouden.</span>
-                <!-- <span>Made with &hearts; for Amsterdam</span> -->
+                <span>&copy; 2026 Open Tower Day Amsterdam. All rights reserved.</span>
             </div>
         </div>
     </footer>
