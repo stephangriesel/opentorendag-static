@@ -82,6 +82,20 @@
             color: var(--primary-red);
         }
 
+        .footer-links a {
+            color: var(--primary-red);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #888;
+        }
+
         .lang-switch {
             font-size: 0.8em;
             color: #aaa;
@@ -184,7 +198,7 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 60px;
             margin-bottom: 60px;
         }
@@ -316,19 +330,32 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div>
-                    <p style="color: #666; font-size: 0.9em; max-width: 500px;">Open Toren Dag Amsterdam is een
+                    <div class="footer-links" style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="torens.html">Torens</a>
+                        <a href="contact.html">Contact</a>
+                        <div class="lang-switch" style="display: inline-block; border: none; padding: 0; margin-left: 0; margin-top: 10px;">
+                            <a href="./index.html" class="active">NL</a> | <a href="./index_en.html">EN</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 style="margin-bottom: 15px; color: var(--primary-red); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9em; font-weight: bold;">Organisatie</h4>
+                    <p style="color: #ccc; font-size: 0.9em; max-width: 500px;">Open Toren Dag Amsterdam is een
                         initiatief van Stichting Open The Doors.</p>
                 </div>
-            </div>
 
-            <div class="sponsors">
-                <strong>Partners & Sponsors 2025</strong>
-                247 Spice Radio, A'DAM LOOKOUT, Amsterdam Fonds voor de Kunst, Albert Heijn, Blue Amsterdam, CBRE Invest
-                Management, De Wervingsspecialist, Depot De Munt, Financial Offices, GIG, HOFF Amsterdam, MyWay,
-                Rembrandt Amsterdam Experience, Rembrandt Tower, RentNet, Rij bij Vincent, ROC van Amsterdam, Stichting
-                Amsterdam 750, Stichting Hello Zuidas, Stichting Hoogbouw, SoundTrackCity, Universiteit van Amsterdam,
-                Use/Space, Vereniging Amsterdam City, Vonckelend, Vrije Universiteit, VSB Fonds, Zandkasteel Amsterdam,
-                Zuiderkerk Amsterdam.
+                <div>
+                    <h4 style="margin-bottom: 15px; color: var(--primary-red); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9em; font-weight: bold;">Partners & Sponsors 2025</h4>
+                    <p style="color: #ccc; font-size: 0.8em; line-height: 1.6;">
+                        247 Spice Radio, A'DAM LOOKOUT, Amsterdam Fonds voor de Kunst, Albert Heijn, Blue Amsterdam, CBRE Invest
+                        Management, De Wervingsspecialist, Depot De Munt, Financial Offices, GIG, HOFF Amsterdam, MyWay,
+                        Rembrandt Amsterdam Experience, Rembrandt Tower, RentNet, Rij bij Vincent, ROC van Amsterdam, Stichting
+                        Amsterdam 750, Stichting Hello Zuidas, Stichting Hoogbouw, SoundTrackCity, Universiteit van Amsterdam,
+                        Use/Space, Vereniging Amsterdam City, Vonckelend, Vrije Universiteit, VSB Fonds, Zandkasteel Amsterdam,
+                        Zuiderkerk Amsterdam.
+                    </p>
+                </div>
             </div>
 
             <div class="copyright">

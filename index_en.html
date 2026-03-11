@@ -276,7 +276,7 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 60px;
             margin-bottom: 60px;
         }
@@ -323,18 +323,17 @@
         }
 
         .footer-links a {
-            color: #888;
+            color: var(--primary-red);
             text-decoration: none;
-            margin-right: 25px;
-            margin-bottom: 10px;
-            font-size: 0.85em;
-            font-weight: 600;
             text-transform: uppercase;
-            transition: color 0.2s;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: color 0.3s;
         }
 
         .footer-links a:hover {
-            color: #fff;
+            color: #888;
         }
 
         .copyright {
@@ -442,7 +441,7 @@
             <span></span>
         </button>
         <nav>
-            <a href="torens.html">Towers</a>
+            <a href="torens.html">Towers 2025</a>
             <!-- <a href="#">Newsletter</a> -->
             <a href="contact.html">Contact</a>
             <div class="lang-switch">
@@ -507,38 +506,41 @@
         <div class="footer-content">
             <div class="footer-grid">
                 <div>
-                    <!-- <div class="footer-links">
-                        <a href="#">Sponsors 2025</a>
-                        <a href="#">Visitor Conditions</a>
-                        <a href="#">General Terms and Conditions</a>
-                        <a href="#">Disclaimer</a>
-                        <a href="#">Privacy Statement</a>
-                        <a href="#">Press</a>
-                    </div> -->
-                    <p style="color: #666; font-size: 0.9em; max-width: 500px;">Open Tower Day Amsterdam is an
-                        initiative of Stichting Open The Doors. We are dedicated to making the rich architecture of our
-                        city accessible to everyone.</p>
+                    <div class="footer-links" style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="torens.html">Towers 2025</a>
+                        <a href="contact.html">Contact</a>
+                        <div class="lang-switch"
+                            style="display: inline-block; border: none; padding: 0; margin-left: 0; margin-top: 10px;">
+                            <a href="./index.html">NL</a> | <a href="./index_en.html" class="active">EN</a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- <div class="support">
-                    <h4>Support the foundation</h4>
-                    <p>Your contribution helps us make this event possible. Scan the QR code on location or use our
-                        IBAN.</p>
-                    <img src="content/optimized/tikkie_qr.png" alt="Tikkie QR" class="tikkie-qr">
-                    <div class="iban">NL68 ABNA 0413 7404 20</div>
-                    <p style="font-size: 0.8em; margin-top: 15px; color: #888;">Stichting Open The Doors (RSIN:
-                        852261942)</p>
-                </div> -->
-            </div>
+                <div>
+                    <h4
+                        style="margin-bottom: 15px; color: var(--primary-red); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9em; font-weight: bold;">
+                        Organization</h4>
+                    <p style="color: #ccc; font-size: 0.9em; max-width: 500px;">Open Tower Day Amsterdam is an
+                        initiative of Stichting Open The Doors.</p>
+                </div>
 
-            <div class="sponsors">
-                <strong>Partners & Sponsors 2025</strong>
-                247 Spice Radio, A'DAM LOOKOUT, Amsterdam Fonds voor de Kunst, Albert Heijn, Blue Amsterdam, CBRE Invest
-                Management, De Wervingsspecialist, Depot De Munt, Financial Offices, GIG, HOFF Amsterdam, MyWay,
-                Rembrandt Amsterdam Experience, Rembrandt Tower, RentNet, Rij bij Vincent, ROC van Amsterdam, Stichting
-                Amsterdam 750, Stichting Hello Zuidas, Stichting Hoogbouw, SoundTrackCity, Universiteit van Amsterdam,
-                Use/Space, Vereniging Amsterdam City, Vonckelend, Vrije Universiteit, VSB Fonds, Zandkasteel Amsterdam,
-                Zuiderkerk Amsterdam.
+                <div>
+                    <h4
+                        style="margin-bottom: 15px; color: var(--primary-red); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9em; font-weight: bold;">
+                        Partners & Sponsors 2025</h4>
+                    <p style="color: #ccc; font-size: 0.8em; line-height: 1.6;">
+                        247 Spice Radio, A'DAM LOOKOUT, Amsterdam Fonds voor de Kunst, Albert Heijn, Blue Amsterdam,
+                        CBRE Invest
+                        Management, De Wervingsspecialist, Depot De Munt, Financial Offices, GIG, HOFF Amsterdam, MyWay,
+                        Rembrandt Amsterdam Experience, Rembrandt Tower, RentNet, Rij bij Vincent, ROC van Amsterdam,
+                        Stichting
+                        Amsterdam 750, Stichting Hello Zuidas, Stichting Hoogbouw, SoundTrackCity, Universiteit van
+                        Amsterdam,
+                        Use/Space, Vereniging Amsterdam City, Vonckelend, Vrije Universiteit, VSB Fonds, Zandkasteel
+                        Amsterdam,
+                        Zuiderkerk Amsterdam.
+                    </p>
+                </div>
             </div>
 
             <div class="copyright">
